@@ -191,6 +191,9 @@
         <!-- Navigation -->
         <nav class="navbar1">
             <a href="index.html" class="logo">MR</a>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                 <i class="fas fa-bars"></i>
+            </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
@@ -380,6 +383,21 @@
       alert('Oops! Something went wrong. Please try again.');
     }
   });
+</script>
+
+<script>
+document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+    
+    // Change icon between bars and times
+    const icon = this.querySelector('i');
+    if (navLinks.classList.contains('active')) {
+        icon.classList.replace('fa-bars', 'fa-times');
+    } else {
+        icon.classList.replace('fa-times', 'fa-bars');
+    }
+});
 </script>
 </body>
 </html>
