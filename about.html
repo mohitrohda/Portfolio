@@ -3,161 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohit Rohda - AI/ML Developer</title>
+    <title>About | Mohit Rohda</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reuse the same CSS variables and base styles from homepage */
+        :root {
+            --dark-navy: #0a192f;
+            --navy: #1e1b4b;
+            --light-navy: #172a45;
+            --lightest-navy: #303C55;
+            --cyan: #00d1ff;
+            --neon-cyan: #00f5d4;
+            --electric-blue: #0066ff;
+            --purple: #7e5bef;
+            --slate: #8892b0;
+            --light-slate: #a8b2d1;
+            --lightest-slate: #e6f1ff;
+            --white: #ffffff;
+        }
+        
+        /* Reuse navigation and footer styles from homepage */
+        
+        /* About Page Specific Styles */
+        .about-hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .about-hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .about-hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--slate);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 60px 0;
+        }
+        
+        .about-text {
+            padding-right: 30px;
+        }
+        
+        .about-text h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+            background: linear-gradient(90deg, var(--cyan), var(--electric-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--slate);
+            line-height: 1.8;
+        }
+        
+        .mission-statement {
+            background: var(--light-navy);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 3px solid var(--neon-cyan);
+            margin: 30px 0;
+        }
+        
+        .mission-statement p {
+            font-style: italic;
+            color: var(--light-slate);
+        }
+        
+        .education {
+            margin-top: 40px;
+        }
+        
+        .education-item {
+            margin-bottom: 30px;
+        }
+        
+        .education-item h3 {
+            font-size: 20px;
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+        
+        .education-item .date {
+            color: var(--neon-cyan);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .education-item p {
+            color: var(--slate);
+        }
+        
+        /* Skills Visualization */
+        .skills-section {
+            margin-top: 60px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .skill-card {
+            background: var(--light-navy);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-cyan);
+        }
+        
+        .skill-icon {
+            font-size: 30px;
+            color: var(--neon-cyan);
+            margin-bottom: 10px;
+        }
+        
+        .skill-name {
+            font-weight: 500;
+            color: var(--white);
+        }
+        
+        .resume-download {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-text {
+                padding-right: 0;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">MR</div>
-                <div class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="projects.html">Projects</a>
-                    <a href="services.html">Services</a>
-                    <a href="about.html">About</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-                <div class="nav-buttons">
-                    <a href="https://drive.google.com/file/d/1_xTU8dkatipI11s6pSK4S_R7nuzKvxCO/view?usp=drive_link" class="btn btn-outline">Resume</a>
-                    <a href="contact.html" class="btn btn-primary">Connect</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-        <!-- About Section -->
-    <section id="about" class="section about-section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <p class="section-subtitle">
-                Passionate about transforming ideas into intelligent solutions through AI and Machine Learning
-            </p>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>My Journey</h3>
-                    <p>Currently pursuing my B.Tech in Computer Science Engineering at Shankaracharya Technical Campus, I've been fascinated by the intersection of technology and human intelligence since my early college days.</p>
-                    <p>My passion lies in building real-world ML tools and SaaS products that solve genuine problems. From developing toxic comment classifiers to creating intelligent recommendation systems, I love turning complex algorithms into user-friendly applications.</p>
-                    <p>My mission is simple: help businesses and users unlock value through AI, making intelligent technology accessible and practical for everyone.</p>
-                    
-                    <h3>Education</h3>
-                    <p>B.Tech in Computer Science Engineering<br>
-                    Shankaracharya Technical Campus, CSVTU<br>
-                    2022 - 2026</p>
-                    
-                    <div class="qualities">
-                        <div class="quality">
-                            <h4>Collaborative</h4>
-                            <p>Team player with strong communication skills</p>
-                        </div>
-                        <div class="quality">
-                            <h4>Problem Solver</h4>
-                            <p>Passionate about turning complex challenges into elegant solutions</p>
-                        </div>
-                    </div>
+    <div class="container">
+        <!-- Navigation -->
+        <nav >
+            <a href="index.html" class="logo">MR</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+        
+        <!-- About Hero -->
+        <section class="about-hero">
+            <h1>About Me</h1>
+            <p>Learn more about my journey, skills, and what drives me to build intelligent AI solutions.</p>
+        </section>
+        
+        <!-- About Content -->
+        <section class="about-content">
+            <div class="about-text">
+                <h2>My Story</h2>
+                <p>I'm Mohit Rohda, a final-year B.Tech student and self-driven AI/ML developer passionate about creating technology that solves real-world problems. My journey in artificial intelligence began when I first discovered how machine learning could be used to analyze complex patterns and make intelligent decisions.</p>
+                
+                <div class="mission-statement">
+                    <p>"I build AI tools that understand language and solve real problems. With a focus on clean code and solid ML models, I aim to create technology that truly helps."</p>
                 </div>
                 
-                <div class="about-skills">
-                    <h3>Tech Stack & Expertise</h3>
-                    
-                    <div class="skills-category">
-                        <h4>Machine Learning & AI</h4>
-                        <div class="skills-grid">
-                            <div class="skill-item">Python</div>
-                            <div class="skill-item">scikit-learn</div>
-                            <div class="skill-item">TensorFlow</div>
-                            <div class="skill-item">NLP</div>
-                            <div class="skill-item">Pandas</div>
-                            <div class="skill-item">NumPy</div>
-                        </div>
+                <p>What excites me most about AI is its potential to transform industries and improve lives. Whether it's through computer vision systems that can detect diseases or natural language processing tools that break down communication barriers, I believe in building practical solutions that make a difference.</p>
+                
+                <div class="education">
+                    <h2>Education</h2>
+                    <div class="education-item">
+                        <h3>Bachelor of Technology (B.Tech)</h3>
+                        <div class="date">2021 - 2025 (Expected)</div>
+                        <p>Computer Science with specialization in Artificial Intelligence</p>
                     </div>
-                    
-                    <div class="skills-category">
-                        <h4>Web Development</h4>
-                        <div class="skills-grid">
-                            <div class="skill-item">Flask</div>
-                            <div class="skill-item">Streamlit</div>
-                            <div class="skill-item">HTML/CSS</div>
-                            <div class="skill-item">JavaScript</div>
-                            <div class="skill-item">REST APIs</div>
-                        </div>
-                    </div>
-                    
-                    <div class="skills-category">
-                        <h4>Tools & Platforms</h4>
-                        <div class="skills-grid">
-                            <div class="skill-item">Git</div>
-                            <div class="skill-item">Jupyter</div>
-                            <div class="skill-item">VS Code</div>
-                            <div class="skill-item">Google Colab</div>
-                        </div>
+                    <div class="education-item">
+                        <h3>Machine Learning Certification</h3>
+                        <div class="date">2023</div>
+                        <p>Advanced coursework in Deep Learning and Neural Networks</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+            
+            <div class="skills-section">
+                <h2>My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fab fa-python"></i></div>
+                        <div class="skill-name">Python</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                        <div class="skill-name">TensorFlow</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-robot"></i></div>
+                        <div class="skill-name">Deep Learning</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-eye"></i></div>
+                        <div class="skill-name">Computer Vision</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-language"></i></div>
+                        <div class="skill-name">NLP</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-project-diagram"></i></div>
+                        <div class="skill-name">Neural Networks</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="skill-name">MLOps</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-server"></i></div>
+                        <div class="skill-name">FastAPI</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-database"></i></div>
+                        <div class="skill-name">Pandas</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+                        <div class="skill-name">Git</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="skill-name">Streamlit</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-code"></i></div>
+                        <div class="skill-name">YOLO</div>
+                    </div>
+                </div>
+                
+                <div class="resume-download">
+                    <a href="https://drive.google.com/file/d/1_xTU8dkatipI11s6pSK4S_R7nuzKvxCO/view?usp=drive_link" target="_blank" class="btn btn-primary" download>
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer (reuse from homepage) -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <h3>Mohit Rohda</h3>
-                    <p>AI/ML Developer passionate about building intelligent systems that solve real-world problems. Let's create the future together.</p>
-                    <p class="footer-quote">Let's Build Something Amazing</p>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <div class="links-grid">
-                        <div class="links-column">
-                            <h4>Navigation</h4>
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="projects.html">Projects</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-                        <div class="links-column">
-                            <h4>Services</h4>
-                            <ul>
-                                <li><a href="services.html">ML Model Development</a></li>
-                                <li><a href="services.html">NLP Solutions</a></li>
-                                <li><a href="services.html">Generative AI</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <a href="index.html" class="footer-logo">MR</a>
+            <p>Building Intelligent AI solutions that understand language and solve real-world problems.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
             </div>
-            
-            <div class="footer-bottom">
-                <p>© 2025 Mohit Rohda. All rights reserved.</p>
+            <div class="copyright">
+                &copy; 2025 Mohit Rohda. All rights reserved.
             </div>
         </div>
     </footer>
-
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>

@@ -3,188 +3,524 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohit Rohda - AI/ML Developer</title>
+    <title>Projects | Mohit Rohda</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reuse base styles and variables */
+        
+        .projects-hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .projects-hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .projects-hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--slate);
+        }
+        
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            background: transparent;
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--neon-cyan);
+            color: var(--dark-navy);
+        }
+        
+        .projects-container {
+            padding: 60px 0;
+        }
+        
+        .project-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+        
+        .project-images {
+            position: relative;
+        }
+        
+        .main-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-info h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--slate);
+        }
+        
+        .meta-item i {
+            color: var(--neon-cyan);
+        }
+        
+        .project-description {
+            margin-bottom: 30px;
+            color: var(--slate);
+            line-height: 1.8;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .tech-tag {
+            background: rgba(0, 245, 212, 0.1);
+            color: var(--neon-cyan);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .project-links a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: var(--neon-cyan);
+            transition: color 0.3s;
+        }
+        
+        .project-links a:hover {
+            color: var(--cyan);
+        }
+        
+        .project-links a i {
+            margin-right: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .project-detail {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-images {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">MR</div>
-                <div class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="projects.html">Projects</a>
-                    <a href="services.html">Services</a>
-                    <a href="about.html">About</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-                <div class="nav-buttons">
-                    <a href="https://drive.google.com/file/d/1_xTU8dkatipI11s6pSK4S_R7nuzKvxCO/view?usp=drive_link" class="btn btn-outline">Resume</a>
-                    <a href="contact.html" class="btn btn-primary">Connect</a>
-                </div>
-            </nav>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar1">
+            <a href="index.html" class="logo">MR</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+        
+        <!-- Projects Hero -->
+        <section class="projects-hero">
+            <h1>My Projects</h1>
+            <p>Explore my work in AI and machine learning. Each project solves a unique problem using cutting-edge technologies.</p>
+        </section>
+        
+        <!-- Filter Controls -->
+        <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="nlp">NLP</button>
+            <button class="filter-btn" data-filter="cv">Computer Vision</button>
+            <button class="filter-btn" data-filter="ml">Machine Learning</button>
+            <button class="filter-btn" data-filter="dl">Deep Learning</button>
         </div>
-    </header>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section projects-section">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <p class="section-subtitle">
-                A showcase of my AI/ML projects that demonstrate practical applications of machine learning in real-world scenarios
-            </p>
-            
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Toxic Comment Classifier</h3>
-                        <p>Multi-label text classification system for moderating online content using advanced NLP techniques</p>
-                        
-                        <div class="project-features">
-                            <h4>Key Features</h4>
-                            <ul>
-                                <li>Multi-label classification</li>
-                                <li>Real-time processing</li>
-                                <li>High accuracy metrics</li>
-                            </ul>
+        
+        <!-- Projects Container -->
+        <div class="projects-container">
+            <!-- Project 1 -->
+            <div class="project-detail" data-category="cv,dl">
+                <div class="project-images">
+                    <img src="media/Plant.png" alt="Plant Disease Classification" class="main-image">
+                </div>
+                <div class="project-info">
+                    <h2>Plant Disease Classification</h2>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span></span>
                         </div>
-                        
-                        <div class="project-tech">
-                            <h4>Technologies</h4>
-                            <div class="tech-grid">
-                                <div class="tech-item">Python</div>
-                                <div class="tech-item">scikit-learn</div>
-                                <div class="tech-item">TF-IDF</div>
-                                <div class="tech-item">ROC-AUC</div>
-                            </div>
-                        </div>
-                        <div class="project-buttons">
-                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <div class="meta-item">
+                            <i class="fas fa-tag"></i>
+                            <span></span>
                         </div>
                     </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Customer Segmentation App</h3>
-                        <p>K-Means clustering application analyzing customer data to enable targeted marketing strategies</p>
-                        
-                        <div class="project-features">
-                            <h4>Key Features</h4>
-                            <ul>
-                                <li>Interactive visualizations</li>
-                                <li>Dynamic clustering</li>
-                                <li>Business insights</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="project-tech">
-                            <h4>Technologies</h4>
-                            <div class="tech-grid">
-                                <div class="tech-item">Python</div>
-                                <div class="tech-item">pandas</div>
-                                <div class="tech-item">matplotlib</div>
-                                <div class="tech-item">K-Means</div>
-                            </div>
-                        </div>
-                        <div class="project-buttons">
-                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        </div>
+                    <p class="project-description">
+                        A CNN-based system that identifies plant diseases from leaf images with 95% accuracy. The model was trained on a dataset of 50,000+ images across 38 disease categories. The system helps farmers detect early signs of plant diseases, potentially saving crops and increasing yields.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">CNN</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Streamlit</span>
                     </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Movie Recommendation System</h3>
-                        <p>Intelligent movie recommender using cosine similarity and TMDB API with interactive Streamlit interface</p>
-                        
-                        <div class="project-features">
-                            <h4>Key Features</h4>
-                            <ul>
-                                <li>Real-time recommendations</li>
-                                <li>API integration</li>
-                                <li>User-friendly interface</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="project-tech">
-                            <h4>Technologies</h4>
-                            <div class="tech-grid">
-                                <div class="tech-item">Python</div>
-                                <div class="tech-item">Streamlit</div>
-                                <div class="tech-item">TMDB API</div>
-                                <div class="tech-item">Cosine Similarity</div>
-                            </div>
-                        </div>
-                        <div class="project-buttons">
-                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mohitrohda/Potato_Disease_Classification" target="_blank"><i class="fab fa-github"></i>View Code</a>
+                        <!-- <a href="#"><i class="fas fa-external-link-alt"></i>Live Demo</a> -->
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+            
+            <!-- Project 2 -->
+            <div class="project-detail" data-category="cv,dl">
+                <div class="project-images">
+                    <img src="media/vehicle.png" alt="Vehicle Detection System" class="main-image">
+                </div>
+                <div class="project-info">
+                    <h2>Vehicle Detection System</h2>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tag"></i>
+                            <span>Object Detection</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        YOLO-based real-time vehicle tracking and detection system for traffic analysis. The model achieves 89% mAP on the COCO dataset and processes 30 FPS on consumer hardware. Potential applications include traffic monitoring, parking management, and autonomous vehicle systems.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">YOLOv5</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Deep Learning</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mohitrohda/Vehicle_Tracking-and-counting" target="_blank"><i class="fab fa-github"></i>View Code</a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-detail" data-category="nlp,dl">
+                <div class="project-images">
+                    <img src="media/ImgCaption.png" alt="Image Captioning System" class="main-image">
+                </div>
+                <div class="project-info">
+                    <h2>Image Captioning System</h2>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>November 2023</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tag"></i>
+                            <span>Multimodal AI</span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        CNN + RNN architecture for generating accurate descriptions of images. The model combines ResNet50 for image features and LSTM for text generation, achieving a BLEU-4 score of 0.35 on the Flickr8k dataset. Potential applications include accessibility tools for visually impaired users.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">CNN</span>
+                        <span class="tech-tag">RNN</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">TensorFlow</span>
+                    </div>
+                    <div class="project-links">
+                        <!-- <a href="#"><i class="fab fa-github"></i>View Code</a>
+                        <a href="#"><i class="fas fa-file-alt"></i>Research Paper</a> -->
+                    </div>
+                </div>
+            </div>
 
-            <!-- Footer -->
+            <!-- Project 4 -->
+            <div class="project-detail" data-category="nlp,dl">
+                <div class="project-images">
+                    <img src="media/Movie.png" alt="Image Captioning System" class="main-image">
+                </div>
+                <div class="project-info">
+                    <h2>Movie Recommendation System</h2>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tag"></i>
+                            <span></span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        CNN + RNN architecture for generating accurate descriptions of images. The model combines ResNet50 for image features and LSTM for text generation, achieving a BLEU-4 score of 0.35 on the Flickr8k dataset. Potential applications include accessibility tools for visually impaired users.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Cosine-Similarity</span>
+                        <span class="tech-tag">ML</span>
+                        <span class="tech-tag">Sk-learn</span>
+                        <!-- <span class="tech-tag">TensorFlow</span> -->
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mohitrohda/Movie_Recommender" target="_blank"><i class="fab fa-github"></i>View Code</a>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-detail" data-category="nlp,dl">
+                <div class="project-images">
+                    <img src="media/job_scrapper.png" alt="Job Scraper" class="main-image">
+                </div>
+                <div class="project-info">
+                    <h2>Job Scraper</h2>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tag"></i>
+                            <span></span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        CNN + RNN architecture for generating accurate descriptions of images. The model combines ResNet50 for image features and LSTM for text generation, achieving a BLEU-4 score of 0.35 on the Flickr8k dataset. Potential applications include accessibility tools for visually impaired users.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Cosine-Similarity</span>
+                        <span class="tech-tag">ML</span>
+                        <span class="tech-tag">Sk-learn</span>
+                        <!-- <span class="tech-tag">TensorFlow</span> -->
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mohitrohda/Job_Scrapper" target="_blank"><i class="fab fa-github"></i>View Code</a>
+                        <!--<a href="#"><i class="fas fa-file-alt"></i>Research Paper</a> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-detail" data-category="nlp,dl">
+                <div class="project-images">
+                    <img src="media/House_price_prediction.png" alt="House Price Prediction" class="main-image">
+                </div>
+                <div class="project-info">
+                    <h2>House Price Prediction</h2>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tag"></i>
+                            <span></span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        CNN + RNN architecture for generating accurate descriptions of images. The model combines ResNet50 for image features and LSTM for text generation, achieving a BLEU-4 score of 0.35 on the Flickr8k dataset. Potential applications include accessibility tools for visually impaired users.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Cosine-Similarity</span>
+                        <span class="tech-tag">ML</span>
+                        <span class="tech-tag">Sk-learn</span>
+                        <!-- <span class="tech-tag">TensorFlow</span> -->
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mohitrohda/Banglore_Home_Price_Prediction" target="_blank"><i class="fab fa-github"></i>View Code</a>
+                        <!-- <a href="#"><i class="fas fa-file-alt"></i>Research Paper</a> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="project-detail" data-category="nlp,dl">
+                <div class="project-images">
+                    <img src="media/Jarvis.png" alt="Jarvis" class="main-image">
+                </div>
+                <div class="project-info">
+                    <h2>Virtual Voice Assistant - Jarvis</h2>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tag"></i>
+                            <span></span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        CNN + RNN architecture for generating accurate descriptions of images. The model combines ResNet50 for image features and LSTM for text generation, achieving a BLEU-4 score of 0.35 on the Flickr8k dataset. Potential applications include accessibility tools for visually impaired users.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Cosine-Similarity</span>
+                        <span class="tech-tag">ML</span>
+                        <span class="tech-tag">Sk-learn</span>
+                        <!-- <span class="tech-tag">TensorFlow</span> -->
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mohitrohda/Virtual-Voice-Assistant-JARVIS" target="_blank"><i class="fab fa-github"></i>View Code</a>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="project-detail" data-category="nlp,dl">
+                <div class="project-images">
+                    <img src="media/Toxic_Comment.png" alt="Toxic Comment Classification" class="main-image">
+                </div>
+                <div class="project-info">
+                    <h2>Toxic Comment Classification</h2>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tag"></i>
+                            <span></span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        CNN + RNN architecture for generating accurate descriptions of images. The model combines ResNet50 for image features and LSTM for text generation, achieving a BLEU-4 score of 0.35 on the Flickr8k dataset. Potential applications include accessibility tools for visually impaired users.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Cosine-Similarity</span>
+                        <span class="tech-tag">ML</span>
+                        <span class="tech-tag">Sk-learn</span>
+                        <!-- <span class="tech-tag">TensorFlow</span> -->
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mohitrohda/Toxic_Comment_Classifier" target="_blank"><i class="fab fa-github"></i>View Code</a>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 9 -->
+            <div class="project-detail" data-category="nlp,dl">
+                <div class="project-images">
+                    <img src="media/Wheather_forcast.png" alt="Weather Forecast" class="main-image">
+                </div>
+                <div class="project-info">
+                    <h2>Weather Forecast</h2>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tag"></i>
+                            <span></span>
+                        </div>
+                    </div>
+                    <p class="project-description">
+                        CNN + RNN architecture for generating accurate descriptions of images. The model combines ResNet50 for image features and LSTM for text generation, achieving a BLEU-4 score of 0.35 on the Flickr8k dataset. Potential applications include accessibility tools for visually impaired users.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Cosine-Similarity</span>
+                        <span class="tech-tag">ML</span>
+                        <span class="tech-tag">Sk-learn</span>
+                        <!-- <span class="tech-tag">TensorFlow</span> -->
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mohitrohda/Weather-Forcast" target="_blank"><i class="fab fa-github"></i>View Code</a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- More projects would follow the same structure -->
+        </div>
+    </div>
+    
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <h3>Mohit Rohda</h3>
-                    <p>AI/ML Developer passionate about building intelligent systems that solve real-world problems. Let's create the future together.</p>
-                    <p class="footer-quote">Let's Build Something Amazing</p>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <div class="links-grid">
-                        <div class="links-column">
-                            <h4>Navigation</h4>
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="projects.html">Projects</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-                        <div class="links-column">
-                            <h4>Services</h4>
-                            <ul>
-                                <li><a href="services.html">ML Model Development</a></li>
-                                <li><a href="services.html">NLP Solutions</a></li>
-                                <li><a href="services.html">Generative AI</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <a href="index.html" class="footer-logo">MR</a>
+            <p>Building Intelligent AI solutions that understand language and solve real-world problems.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
             </div>
-            
-            <div class="footer-bottom">
-                <p>© 2025 Mohit Rohda. All rights reserved.</p>
+            <div class="copyright">
+                &copy; 2025 Mohit Rohda. All rights reserved.
             </div>
         </div>
     </footer>
+
     <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+        // Simple filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
                 
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+                const filter = this.getAttribute('data-filter');
+                const projects = document.querySelectorAll('.project-detail');
                 
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+                projects.forEach(project => {
+                    if (filter === 'all') {
+                        project.style.display = 'grid';
+                    } else {
+                        const categories = project.getAttribute('data-category').split(',');
+                        if (categories.includes(filter)) {
+                            project.style.display = 'grid';
+                        } else {
+                            project.style.display = 'none';
+                        }
+                    }
+                });
             });
         });
     </script>

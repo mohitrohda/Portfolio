@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Mohit Rohda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reuse base styles and variables */
+        
+        .blog-hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .blog-hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .blog-hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--slate);
+        }
+        
+        .blog-container {
+            padding: 60px 0;
+        }
+        
+        .search-bar {
+            display: flex;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 12px 20px;
+            background: var(--light-navy);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            border-radius: 5px 0 0 5px;
+            color: var(--lightest-slate);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--neon-cyan);
+        }
+        
+        .search-btn {
+            background: linear-gradient(135deg, var(--cyan), var(--electric-blue));
+            color: var(--dark-navy);
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            background: transparent;
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: var(--neon-cyan);
+            color: var(--dark-navy);
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .article-card {
+            background: var(--light-navy);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        .article-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-cyan);
+        }
+        
+        .article-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--purple), var(--electric-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .article-content {
+            padding: 25px;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--slate);
+        }
+        
+        .article-category {
+            background: rgba(0, 245, 212, 0.1);
+            color: var(--neon-cyan);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        .article-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+        
+        .article-excerpt {
+            color: var(--slate);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .read-more {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+        
+        .read-more:hover {
+            color: var(--cyan);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            background: var(--light-navy);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            color: var(--light-slate);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .page-btn.active, .page-btn:hover {
+            background: linear-gradient(135deg, var(--cyan), var(--electric-blue));
+            color: var(--dark-navy);
+            border-color: transparent;
+        }
+        
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar1">
+            <a href="index.html" class="logo">MR</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+        
+        <!-- Blog Hero -->
+        <section class="blog-hero">
+            <h1>AI Insights & Tutorials</h1>
+            <p>Sharing my learnings and perspectives on artificial intelligence, machine learning, and technology.</p>
+        </section>
+        
+        <!-- Blog Container -->
+        <div class="blog-container">
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search articles...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="category-filter">
+                <button class="category-btn active" data-category="all">All Articles</button>
+                <button class="category-btn" data-category="nlp">NLP</button>
+                <button class="category-btn" data-category="cv">Computer Vision</button>
+                <button class="category-btn" data-category="tutorial">Tutorials</button>
+                <button class="category-btn" data-category="research">Research</button>
+            </div>
+            
+            <div class="articles-grid">
+
+            
+                <!-- Article 1 -->
+            <!--    <div class="article-card" data-category="nlp,research">
+                    <div class="article-image">
+                        <h3>Transformers in NLP</h3>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>June 15, 2024</span>
+                            <span class="article-category">NLP</span>
+                        </div>
+                        <h3 class="article-title">Understanding Transformer Architectures in Modern NLP</h3>
+                        <p class="article-excerpt">Exploring how transformer models like BERT and GPT have revolutionized natural language processing and what makes them so effective...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div> -->
+                
+                <!-- Article 2 -->
+             <!--   <div class="article-card" data-category="cv,tutorial">
+                    <div class="article-image">
+                        <h3>YOLO Implementation</h3>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>May 28, 2024</span>
+                            <span class="article-category">Tutorial</span>
+                        </div>
+                        <h3 class="article-title">Step-by-Step Guide to Implementing YOLOv5 for Object Detection</h3>
+                        <p class="article-excerpt">A practical tutorial on setting up YOLOv5 for custom object detection tasks, from dataset preparation to model deployment...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>  -->
+                
+                <!-- Article 3 -->
+          <!--      <div class="article-card" data-category="nlp,research">
+                    <div class="article-image">
+                        <h3>LLM Fine-Tuning</h3>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>April 10, 2024</span>
+                            <span class="article-category">Research</span>
+                        </div>
+                        <h3 class="article-title">Efficient Fine-Tuning Techniques for Large Language Models</h3>
+                        <p class="article-excerpt">Comparing different approaches to fine-tuning LLMs with limited computational resources, including LoRA and adapter layers...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div> -->
+                
+                <!-- Article 4 -->
+            <!--    <div class="article-card" data-category="cv,research">
+                    <div class="article-image">
+                        <h3>Medical Imaging AI</h3>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>March 22, 2024</span>
+                            <span class="article-category">Research</span>
+                        </div>
+                        <h3 class="article-title">Advances in AI for Medical Image Analysis</h3>
+                        <p class="article-excerpt">Reviewing state-of-the-art deep learning approaches for medical imaging tasks and their clinical applications...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div> -->
+                
+                <!-- Article 5 -->
+            <!--    <div class="article-card" data-category="tutorial">
+                    <div class="article-image">
+                        <h3>ML Deployment</h3>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>February 15, 2024</span>
+                            <span class="article-category">Tutorial</span>
+                        </div>
+                        <h3 class="article-title">Deploying ML Models with FastAPI and Docker</h3>
+                        <p class="article-excerpt">A comprehensive guide to containerizing and deploying machine learning models as scalable web services...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div> -->
+                
+                <!-- Article 6 -->
+             <!--  <div class="article-card" data-category="nlp,tutorial">
+                    <div class="article-image">
+                        <h3>Sentiment Analysis</h3>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>January 30, 2024</span>
+                            <span class="article-category">Tutorial</span>
+                        </div>
+                        <h3 class="article-title">Building a Real-time Sentiment Analysis Pipeline</h3>
+                        <p class="article-excerpt">Creating an end-to-end system for analyzing sentiment in social media posts using transformer models and streaming data...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>  --> 
+            
+        <!--    <div class="pagination">
+                <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+               <button class="page-btn active">1</button> 
+               <button class="page-btn">2</button> 
+               <button class="page-btn">3</button> 
+                <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+            </div> -->
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="index.html" class="footer-logo">MR</a>
+            <p>Building Intelligent AI solutions that understand language and solve real-world problems.</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Mohit Rohda. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Category filter functionality
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                const articles = document.querySelectorAll('.article-card');
+                
+                articles.forEach(article => {
+                    if (category === 'all') {
+                        article.style.display = 'block';
+                    } else {
+                        const categories = article.getAttribute('data-category').split(',');
+                        if (categories.includes(category)) {
+                            article.style.display = 'block';
+                        } else {
+                            article.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.querySelector('.search-input');
+        searchInput.addEventListener('keyup', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const articles = document.querySelectorAll('.article-card');
+            
+            articles.forEach(article => {
+                const title = article.querySelector('.article-title').textContent.toLowerCase();
+                const excerpt = article.querySelector('.article-excerpt').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
